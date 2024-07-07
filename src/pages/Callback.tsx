@@ -1,7 +1,7 @@
 import React from "react";
 
-const CallbackPage: React.FC = () => {
+const Callback: React.FC = () => {
   return <div>Redirecting...</div>;
 };
 
-export default CallbackPage;
+export default Callback;
