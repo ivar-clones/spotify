@@ -34,9 +34,11 @@ export const Root = () => {
         minSize={20}
         className="my-2 rounded-lg mx-1"
       >
-        <Navbar />
-        <div className="flex h-full items-center justify-center p-6 bg-muted rounded-lg rounded-t-none">
-          <span className="font-semibold">Right</span>
+        <div className="flex h-full flex-col items-center rounded-lg rounded-t-none bg-gradient-to-b via-10% to-15% from-indigo-400 overflow-y-auto">
+          <Navbar />
+          <div className="flex flex-col py-2">
+            <span className="font-semibold">Right</span>
+          </div>
         </div>
       </ResizablePanel>
     </ResizablePanelGroup>
