@@ -8,9 +8,6 @@ const redirectUri = import.meta.env.VITE_REDIRECT_URI;
 const authEndpoint = "https://accounts.spotify.com/authorize";
 const tokenEndpoint = "https://accounts.spotify.com/api/token";
 
-console.log("clientId: ", clientId);
-console.log("redirectUri: ", redirectUri);
-
 interface TokenResponse {
   access_token: string;
   refresh_token: string;
