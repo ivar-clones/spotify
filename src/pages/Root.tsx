@@ -4,6 +4,9 @@ import {
   ResizablePanel,
   ResizableHandle,
 } from "@/components/ui/resizable";
+import { Navigate, Route, Routes } from "react-router-dom";
+import { Home } from "./Home";
+import Callback from "./Callback";
 
 export const Root = () => {
   return (
@@ -36,93 +39,11 @@ export const Root = () => {
       >
         <div className="flex h-full flex-col rounded-lg rounded-t-none bg-gradient-to-b via-10% to-15% from-indigo-400">
           <Navbar />
-          <div className="flex flex-col py-2 px-4 overflow-y-scroll">
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-            <span className="font-semibold">Right</span>
-          </div>
+          <Routes>
+            <Route index path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/callback" element={<Callback />} />
+          </Routes>
         </div>
       </ResizablePanel>
     </ResizablePanelGroup>

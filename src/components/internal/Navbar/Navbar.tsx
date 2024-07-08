@@ -12,7 +12,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { useContext, useEffect, useState } from "react";
 import { SpotifyContext } from "@/providers/SpotifyProvider";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 
 export const Navbar = () => {
@@ -20,6 +20,7 @@ export const Navbar = () => {
   const [userProfile, setUserProfile] = useState(null);
   const location = useLocation();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
     if (client) {
@@ -92,9 +93,37 @@ export const Navbar = () => {
         </DropdownMenu>
       </div>
       <div className="flex flex-row gap-2">
-        <Badge className="h-8">All</Badge>
-        <Badge className="h-8">Music</Badge>
-        <Badge className="h-8">Podcasts</Badge>
+        <Badge
+          variant={!searchParams.get("facet") ? "default" : "secondary"}
+          className="h-8 cursor-pointer"
+          onClick={() => navigate("/")}
+        >
+          All
+        </Badge>
+        <Badge
+          variant={
+            searchParams.get("facet") === "music-chip" ? "default" : "secondary"
+          }
+          className="h-8 cursor-pointer"
+          onClick={() =>
+            navigate(`/home?facet=${encodeURIComponent("music-chip")}`)
+          }
+        >
+          Music
+        </Badge>
+        <Badge
+          variant={
+            searchParams.get("facet") === "podcasts-chip"
+              ? "default"
+              : "secondary"
+          }
+          className="h-8 cursor-pointer"
+          onClick={() =>
+            navigate(`/home?facet=${encodeURIComponent("podcasts-chip")}`)
+          }
+        >
+          Podcasts
+        </Badge>
       </div>
     </div>
   );
