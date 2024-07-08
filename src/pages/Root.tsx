@@ -36,7 +36,7 @@ export const Root = () => {
       >
         <div className="flex h-full flex-col rounded-lg rounded-t-none bg-gradient-to-b via-10% to-15% from-indigo-400">
           <Navbar />
-          <div className="flex flex-col pb-2 pt-4 px-4 overflow-y-scroll">
+          <div className="flex flex-col py-2 px-4 overflow-y-scroll">
             <span className="font-semibold">Right</span>
             <span className="font-semibold">Right</span>
             <span className="font-semibold">Right</span>
