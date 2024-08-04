@@ -29,7 +29,8 @@ export async function getAuthorizationUrl(): Promise<string> {
     code_challenge_method: "S256",
     code_challenge: codeChallenge,
     state: state,
-    scope: "user-read-private user-read-email", // Add scopes as needed
+    scope:
+      "user-read-private user-read-email user-top-read playlist-read-private", // Add scopes as needed
   };
 
   return `${authEndpoint}?${queryString.stringify(params)}`;

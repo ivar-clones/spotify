@@ -14,19 +14,22 @@ import { SpotifyContext } from "@/providers/SpotifyProvider";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
+import { useProfile } from "@/services/hooks/use-profile";
 
 export const Navbar = () => {
-  const { logout, client } = useContext(SpotifyContext);
+  const { logout } = useContext(SpotifyContext);
   const [userProfile, setUserProfile] = useState(null);
   const location = useLocation();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
+  const { data: userProfileData } = useProfile();
+
   useEffect(() => {
-    if (client) {
-      client.getUserProfile().then((profile) => setUserProfile(profile));
+    if (userProfileData) {
+      setUserProfile(userProfileData);
     }
-  }, [client]);
+  }, [userProfileData]);
 
   return (
     <div className="flex flex-col w-full px-4 py-2 rounded-lg rounded-b-none sticky top-0 right-0 left-0 gap-2">
