@@ -2,6 +2,7 @@
 import { generateCodeChallenge, generateRandomString } from "./pkce";
 import axios from "axios";
 import queryString from "query-string";
+import { SCOPES } from "./const";
 
 const clientId = import.meta.env.VITE_CLIENT_ID;
 const redirectUri = import.meta.env.VITE_REDIRECT_URI;
@@ -29,8 +30,7 @@ export async function getAuthorizationUrl(): Promise<string> {
     code_challenge_method: "S256",
     code_challenge: codeChallenge,
     state: state,
-    scope:
-      "user-read-private user-read-email user-top-read playlist-read-private", // Add scopes as needed
+    scope: SCOPES,
   };
 
   return `${authEndpoint}?${queryString.stringify(params)}`;
