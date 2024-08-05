@@ -15,7 +15,7 @@ export const Library = () => {
     <div className="flex flex-col bg-muted rounded-lg w-full h-full p-4 max-sm:py-4 max-sm:px-0 max-sm:-ml-1">
       <div className="flex flex-row justify-start items-center gap-2 ml-1 w-full max-sm:justify-center">
         <LibraryIcon className="text-muted-foreground" />
-        <div className="text-lg text-muted-foreground font-bold max-sm:hidden">
+        <div className="text-md text-muted-foreground font-bold max-sm:hidden">
           Your Library
         </div>
       </div>
@@ -43,7 +43,7 @@ export const Library = () => {
         </Badge>
       </div>
       <SearchBar />
-      <div className="pt-2 mt-2 pr-2 w-full flex flex-col items-center overflow-y-auto max-h-[80%] max-sm:justify-center max-sm:ml-2 max-sm:gap-4">
+      <div className="pt-2 mt-2 pr-2 w-full flex flex-col items-center overflow-y-auto h-[85%] max-sm:ml-2 max-sm:gap-4 max-sm:h-[95%]">
         {userPlaylists?.map((playlist) => (
           <PlaylistCard key={playlist.id} variant="list" playlist={playlist} />
         ))}

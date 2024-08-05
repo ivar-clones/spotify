@@ -9,21 +9,21 @@ import { Library } from "@/components/internal/Library/Library";
 export const Root = () => {
   return (
     <div className="rounded-lg flex w-full h-full">
-      <div className="rounded-lg flex flex-col my-2 mx-1 w-16 md:w-64 lg:w-96">
+      <div className="rounded-lg flex flex-col my-2 mx-1 w-16 md:w-64 lg:w-[450px]">
         <div className="mb-1 flex flex-col p-2 gap-2 rounded-lg bg-muted">
           <Button
             className="flex justify-start gap-4 hover:font-bold"
             variant="secondary"
           >
             <House className="w-full md:w-fit" />
-            <div className="hidden md:block text-lg">Home</div>
+            <div className="hidden md:block text-md">Home</div>
           </Button>
           <Button
             className="flex justify-start gap-4 hover:font-bold"
             variant="secondary"
           >
             <Search className="w-full md:w-fit" />
-            <div className="hidden md:block text-lg">Search</div>
+            <div className="hidden md:block text-md">Search</div>
           </Button>
         </div>
         <div className="mt-1 flex-grow flex-row bg-muted rounded-lg p-2 overflow-y-hidden">
