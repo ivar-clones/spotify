@@ -4,6 +4,7 @@ import { Home } from "./Home";
 import Callback from "./Callback";
 import { Button } from "@/components/ui/button";
 import { House, Search } from "lucide-react";
+import { Library } from "@/components/internal/Library/Library";
 
 export const Root = () => {
   return (
@@ -25,47 +26,8 @@ export const Root = () => {
             <div className="hidden md:block text-lg">Search</div>
           </Button>
         </div>
-        <div className="mt-1 flex-grow flex-row overflow-y-auto bg-muted rounded-lg p-2">
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
-          <div className="font-semibold">Bottom Left Items</div>
+        <div className="mt-1 flex-grow flex-row bg-muted rounded-lg p-2 overflow-y-hidden">
+          <Library />
         </div>
       </div>
       <div className="my-2 rounded-lg mx-1 flex-grow">

@@ -2,11 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
 import { SpotifyContext } from "@/providers/SpotifyProvider";
 
-export const useUserPlaylists = () => {
+export const useUserPlaylists = (limit?: number) => {
   const { client } = useContext(SpotifyContext);
 
   return useQuery({
-    queryKey: ["playlists"],
-    queryFn: () => client?.getUserPlaylists(),
+    queryKey: ["playlists", limit],
+    queryFn: () => client?.getUserPlaylists(limit),
   });
 };
