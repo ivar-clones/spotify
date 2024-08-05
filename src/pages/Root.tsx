@@ -31,7 +31,7 @@ export const Root = () => {
         </div>
       </div>
       <div className="my-2 rounded-lg mx-1 flex-grow">
-        <div className="flex h-full flex-col rounded-lg rounded-t-none bg-gradient-to-b via-10% to-15% from-indigo-400">
+        <div className="flex h-full flex-col rounded-lg bg-gradient-to-b via-10% to-15% from-indigo-400">
           <Navbar />
           <Routes>
             <Route index path="/" element={<Home />} />
