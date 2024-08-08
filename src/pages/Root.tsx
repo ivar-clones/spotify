@@ -9,7 +9,7 @@ import { Library } from "@/components/internal/Library/Library";
 export const Root = () => {
   return (
     <div className="rounded-lg flex w-full h-full">
-      <div className="rounded-lg flex flex-col my-2 mx-1 w-16 md:w-64 lg:w-[450px]">
+      <div className="rounded-lg flex flex-col my-2 mx-1 w-16 md:w-64 lg:w-[450px] xl:w-[700px] 2xl:w-[900px]">
         <div className="mb-1 flex flex-col p-2 gap-2 rounded-lg bg-muted">
           <Button
             className="flex justify-start gap-4 hover:font-bold"
