@@ -6,8 +6,8 @@ export const PlaylistCard = (props: PlaylistCardProps) => {
 
   if (variant === "grid") {
     return (
-      <div className="h-[17rem] w-44 rounded-lg p-2 mt-5 hover:bg-muted flex flex-col gap-1">
-        <Avatar className="rounded-sm h-40 w-full">
+      <div className="min-h-fit w-40 rounded-lg p-2 hover:bg-muted flex flex-col gap-1 overflow-hidden">
+        <Avatar className="rounded-sm h-36 w-full">
           <AvatarImage src={playlist.images?.[0].url} className="object-fill" />
         </Avatar>
         <div className="text-ellipsis line-clamp-2">{playlist.name}</div>

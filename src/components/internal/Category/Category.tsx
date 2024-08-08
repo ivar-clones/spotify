@@ -5,7 +5,7 @@ export const Category = (props: CategoryProps) => {
   const { category } = props;
   return (
     <div className="flex flex-col mt-8">
-      <div className="flex flex-row justify-between">
+      <div className="flex flex-row justify-between mb-5">
         <span className="text-2xl">{category.name}</span>
         <span className="text-sm text-muted-foreground hover:underline">
           Show all
