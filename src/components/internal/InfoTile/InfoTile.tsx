@@ -45,7 +45,7 @@ export const InfoTile = (props: InfoTileProps) => {
           )}
         </Avatar>
       </div>
-      <div className="px-4 flex items-center w-[80%] font-bold">
+      <div className="px-4 flex items-center w-[50%] md:w-[60%] lg:w-[70%] xl:w-[80%] 2xl:w-[90%] font-bold">
         <div className="text-ellipsis line-clamp-2">{info.name}</div>
       </div>
     </div>
