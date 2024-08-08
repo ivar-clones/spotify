@@ -11,7 +11,7 @@ export const Category = (props: CategoryProps) => {
           Show all
         </span>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-6 2xl:grid-cols-8 gap-2">
+      <div className="grid grid-rows-[repeat(1,minmax(0,1fr))] grid-cols-[repeat(auto-fill,minmax(160px,1fr))] auto-rows-[0px] overflow-hidden">
         {category.playlists.map((playlist, index) => (
           <PlaylistCard key={`${playlist.id}_${index}`} playlist={playlist} />
         ))}
