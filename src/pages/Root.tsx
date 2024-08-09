@@ -5,11 +5,12 @@ import Callback from "./Callback";
 import { Button } from "@/components/ui/button";
 import { House, Search } from "lucide-react";
 import { Library } from "@/components/internal/Library/Library";
+import { Playlist } from "./Playlist";
 
 export const Root = () => {
   return (
     <div className="rounded-lg flex w-full h-full">
-      <div className="rounded-lg flex flex-col my-2 mx-1 w-16 md:w-64 lg:w-[450px] xl:w-[650px] 2xl:w-[900px]">
+      <div className="rounded-lg flex flex-col my-2 mx-1 w-16 md:min-w-64 lg:min-w-[450px] xl:max-w-[650px] 2xl:max-w-[900px]">
         <div className="mb-1 flex flex-col p-2 gap-2 rounded-lg bg-muted">
           <Button
             className="flex justify-start gap-4 hover:font-bold"
@@ -36,6 +37,7 @@ export const Root = () => {
           <Routes>
             <Route index path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/playlist/:id" element={<Playlist />} />
             <Route path="/callback" element={<Callback />} />
           </Routes>
         </div>
