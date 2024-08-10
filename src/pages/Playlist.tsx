@@ -9,8 +9,6 @@ export const Playlist = () => {
 
   const { data, isLoading: isLoadingPlaylistDetail } = usePlaylistDetail(id);
 
-  console.log("data: ", data);
-
   if (isLoadingPlaylistDetail || !data) {
     return <Skeleton className="h-full w-full" />;
   }
