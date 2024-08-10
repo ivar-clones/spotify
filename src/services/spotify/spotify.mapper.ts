@@ -33,7 +33,10 @@ export class SpotifyMapper {
           id: item.track.id,
           image: item.track.album?.images[0],
           uri: item.track.uri,
+          albumName: item.track.album.name,
+          name: item.track.name,
           duration: item.track.duration_ms,
+          artists: item.track.artists.map((artist) => artist.name).join(", "),
         });
       }
     });

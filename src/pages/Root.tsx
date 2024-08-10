@@ -1,4 +1,3 @@
-import { Navbar } from "@/components/internal/Navbar/Navbar";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { Home } from "./Home";
 import Callback from "./Callback";

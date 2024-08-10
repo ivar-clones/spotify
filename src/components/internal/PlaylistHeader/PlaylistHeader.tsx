@@ -1,20 +1,6 @@
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { PlaylistHeaderProps } from "./PlaylistHeaderProps.interface";
-
-const timeFormatter = (duration: number): string => {
-  const milliseconds = duration;
-
-  const minutes = Math.floor((milliseconds / 1000 / 60) % 60);
-
-  const hours = Math.floor((milliseconds / 1000 / 60 / 60) % 24);
-
-  const formattedTime = [
-    `${hours.toString().padStart(2)} hr`,
-    `${minutes.toString().padStart(2)} min`,
-  ].join(" ");
-
-  return formattedTime;
-};
+import { timeFormatterInHrsMins } from "@/lib/utils";
 
 export const PlaylistHeader = (props: PlaylistHeaderProps) => {
   const { name, description, type, total, totalDuration, image } = props;
@@ -34,7 +20,7 @@ export const PlaylistHeader = (props: PlaylistHeaderProps) => {
             <div className="text-sm">{total} songs</div>
             <div className="text-sm">•</div>
             <div className="text-sm text-muted-foreground">
-              about {timeFormatter(totalDuration)}
+              about {timeFormatterInHrsMins(totalDuration)}
             </div>
           </div>
         </div>
