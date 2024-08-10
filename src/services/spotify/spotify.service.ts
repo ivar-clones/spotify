@@ -7,6 +7,8 @@ import { IPlaylist } from "@/core/models/server/Playlist.interface";
 import { CategoryPlaylist } from "@/core/models/client/CategoryPlaylist.interface";
 import { ICategories } from "@/core/models/server/Categories.interface";
 import { IPlaylists } from "@/core/models/server/Playlists.interface";
+import { IPlaylistDetailResponse } from "@/core/models/server/PlaylistDetailResponse.interface";
+import { PlaylistDetail } from "@/core/models/client/PlaylistDetail.interface";
 
 export class SpotifyClient {
   private client: AxiosInstance;
@@ -64,6 +66,16 @@ export class SpotifyClient {
         ),
       };
     });
+  };
+
+  getPlaylist = async (playlistId?: string): Promise<PlaylistDetail> => {
+    const response = await this.client.get<IPlaylistDetailResponse>(
+      `/playlists/${playlistId}`
+    );
+
+    return this.mapper.fromServerPlaylistDetailResponseToClientPlaylistDetail(
+      response.data
+    );
   };
 
   // Add more methods to interact with the Spotify API as needed
