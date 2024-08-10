@@ -45,7 +45,7 @@ export class SpotifyClient {
   };
 
   getCategories = async (): Promise<CategoryPlaylist[]> => {
-  const categories = await this.client.get<ICategories>(
+    const categories = await this.client.get<ICategories>(
       "/browse/categories?limit=10"
     );
     const playlistRequests = categories.data.categories.items.map((category) =>
