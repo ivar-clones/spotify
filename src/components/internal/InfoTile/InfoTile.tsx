@@ -7,7 +7,7 @@ export const InfoTile = (props: InfoTileProps) => {
   return (
     <div className="rounded-sm flex flex-row bg-indigo-300 bg-opacity-40 w-full hover:bg-opacity-80 hover:cursor-pointer">
       <div className="flex">
-        <Avatar className="rounded-sm h-16 w-16">
+        <Avatar className="rounded-sm h-12 w-12">
           {info.images ? (
             <>
               <AvatarImage
