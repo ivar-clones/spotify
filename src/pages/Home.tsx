@@ -9,7 +9,7 @@ export const Home = () => {
 
   return (
     <div className="flex flex-col py-2 px-4 overflow-y-scroll">
-      <div className="grid gap-4 grid-cols-2 md:grid-cols-4">
+      <div className="grid gap-2 grid-cols-2 md:grid-cols-4">
         {userPlaylists?.map((item) => (
           <InfoTile key={item.id} info={item} />
         ))}
