@@ -15,7 +15,6 @@ export const PlaylistCard = (props: PlaylistCardProps) => {
           navigate(`/playlist/${playlist.id}`, {
             state: { from: location.pathname },
           });
-          // sessionStorage.setItem("fromPath", location.pathname);
         }}
       >
         <Avatar className="rounded-sm h-36 w-full">
@@ -30,7 +29,14 @@ export const PlaylistCard = (props: PlaylistCardProps) => {
   }
 
   return (
-    <div className="flex flex-row justify-start items-center w-full gap-2 rounded-lg p-2 hover:cursor-pointer hover:bg-background max-sm:justify-center max-sm:p-0">
+    <div
+      className="flex flex-row justify-start items-center w-full gap-2 rounded-lg p-2 hover:cursor-pointer hover:bg-background max-sm:justify-center max-sm:p-0"
+      onClick={() => {
+        navigate(`/playlist/${playlist.id}`, {
+          state: { from: location.pathname },
+        });
+      }}
+    >
       <Avatar className="rounded-sm">
         <AvatarImage src={playlist.images?.[0].url} className="object-fill" />
         <AvatarFallback>MP</AvatarFallback>

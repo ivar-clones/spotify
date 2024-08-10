@@ -36,7 +36,7 @@ export const Navbar = () => {
     location.key === "default" || location.state?.from === "/";
 
   return (
-    <div className="flex flex-col w-full px-4 py-2 rounded-lg rounded-b-none sticky top-0 right-0 left-0 gap-2">
+    <div className="flex flex-col w-full px-4 py-2 rounded-lg rounded-b-none sticky top-0 right-0 left-0 gap-2 z-50 bg-gradient-to-b from-indigo-400 to-transparent">
       <div className="flex flex-row justify-between items-center">
         <div className="flex flex-row gap-2">
           <Avatar

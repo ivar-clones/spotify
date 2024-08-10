@@ -1,3 +1,4 @@
+import { Image } from "../shared/Image.interface";
 import { PlaylistTrack } from "./PlaylistTrack.interface";
 
 export interface PlaylistDetail {
@@ -7,5 +8,6 @@ export interface PlaylistDetail {
   readonly type: string;
   readonly total: number;
   readonly totalDuration: number;
+  readonly image: Image;
   readonly tracks: PlaylistTrack[];
 }

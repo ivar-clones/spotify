@@ -38,16 +38,13 @@ export const Root = () => {
           <Library />
         </div>
       </div>
-      <div className="my-2 rounded-lg mx-1 flex-grow">
-        <div className="flex h-full flex-col rounded-lg bg-gradient-to-b via-10% to-15% from-indigo-400">
-          <Navbar />
-          <Routes>
-            <Route index path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/playlist/:id" element={<Playlist />} />
-            <Route path="/callback" element={<Callback />} />
-          </Routes>
-        </div>
+      <div className="my-2 rounded-lg ml-1 mr-2 flex-grow">
+        <Routes>
+          <Route index path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/playlist/:id" element={<Playlist />} />
+          <Route path="/callback" element={<Callback />} />
+        </Routes>
       </div>
     </div>
   );
