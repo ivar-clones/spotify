@@ -1,5 +1,5 @@
 import { Navbar } from "@/components/internal/Navbar/Navbar";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { Home } from "./Home";
 import Callback from "./Callback";
 import { Button } from "@/components/ui/button";
@@ -8,6 +8,8 @@ import { Library } from "@/components/internal/Library/Library";
 import { Playlist } from "./Playlist";
 
 export const Root = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   return (
     <div className="rounded-lg flex w-full h-full">
       <div className="rounded-lg flex flex-col my-2 mx-1 w-16 md:min-w-64 lg:min-w-[450px] xl:max-w-[650px] 2xl:max-w-[900px]">
@@ -15,6 +17,7 @@ export const Root = () => {
           <Button
             className="flex justify-start gap-4 hover:font-bold"
             variant="secondary"
+            onClick={() => location.pathname !== "/" && navigate("/")}
           >
             <House className="w-full md:w-fit" />
             <div className="hidden md:block text-md">Home</div>

@@ -12,16 +12,16 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { useContext, useEffect, useState } from "react";
 import { SpotifyContext } from "@/providers/SpotifyProvider";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { useProfile } from "@/services/hooks/use-profile";
 
 export const Navbar = () => {
+  const [filter, setFilter] = useState<"all" | "music" | "podcasts">("all");
   const { logout } = useContext(SpotifyContext);
   const [userProfile, setUserProfile] = useState(null);
   const location = useLocation();
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
 
   const { data: userProfileData } = useProfile();
 
@@ -31,36 +31,43 @@ export const Navbar = () => {
     }
   }, [userProfileData]);
 
+  const isBackDisabled = location.pathname === "/";
+  const isForwardDisabled =
+    location.key === "default" || location.state?.from === "/";
+
   return (
     <div className="flex flex-col w-full px-4 py-2 rounded-lg rounded-b-none sticky top-0 right-0 left-0 gap-2">
       <div className="flex flex-row justify-between items-center">
         <div className="flex flex-row gap-2">
           <Avatar
             className={`h-8 w-8 bg-background items-center justify-center pr-0.5 ${
-              location.key !== "default"
-                ? "cursor-pointer"
-                : "cursor-not-allowed"
+              isBackDisabled ? "cursor-not-allowed" : "cursor-pointer"
             }`}
-            onClick={() => location.key !== "default" && navigate(-1)}
+            onClick={() => {
+              if (!isBackDisabled) {
+                navigate(location.state?.from, {
+                  state: { from: location.pathname },
+                });
+              }
+            }}
           >
             <ChevronLeft
-              className={
-                location.key === "default" ? "text-muted-foreground" : ""
-              }
+              className={isBackDisabled ? "text-muted-foreground" : ""}
             />
           </Avatar>
           <Avatar
             className={`h-8 w-8 bg-background items-center justify-center pl-0.5 ${
-              location.key !== "default"
-                ? "cursor-pointer"
-                : "cursor-not-allowed"
+              isForwardDisabled ? "cursor-not-allowed" : "cursor-pointer"
             }`}
-            onClick={() => location.key !== "default" && navigate(1)}
+            onClick={() =>
+              !isForwardDisabled &&
+              navigate(location.state?.from, {
+                state: { from: location.pathname },
+              })
+            }
           >
             <ChevronRight
-              className={
-                location.key === "default" ? "text-muted-foreground" : ""
-              }
+              className={isForwardDisabled ? "text-muted-foreground" : ""}
             />
           </Avatar>
         </div>
@@ -95,39 +102,31 @@ export const Navbar = () => {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <div className="flex flex-row gap-2">
-        <Badge
-          variant={!searchParams.get("facet") ? "default" : "secondary"}
-          className="h-8 cursor-pointer"
-          onClick={() => navigate("/")}
-        >
-          All
-        </Badge>
-        <Badge
-          variant={
-            searchParams.get("facet") === "music-chip" ? "default" : "secondary"
-          }
-          className="h-8 cursor-pointer"
-          onClick={() =>
-            navigate(`/home?facet=${encodeURIComponent("music-chip")}`)
-          }
-        >
-          Music
-        </Badge>
-        <Badge
-          variant={
-            searchParams.get("facet") === "podcasts-chip"
-              ? "default"
-              : "secondary"
-          }
-          className="h-8 cursor-pointer"
-          onClick={() =>
-            navigate(`/home?facet=${encodeURIComponent("podcasts-chip")}`)
-          }
-        >
-          Podcasts
-        </Badge>
-      </div>
+      {isBackDisabled ? (
+        <div className="flex flex-row gap-2">
+          <Badge
+            variant={filter === "all" ? "default" : "secondary"}
+            className="h-8 cursor-pointer"
+            onClick={() => setFilter("all")}
+          >
+            All
+          </Badge>
+          <Badge
+            variant={filter === "music" ? "default" : "secondary"}
+            className="h-8 cursor-pointer"
+            onClick={() => setFilter("music")}
+          >
+            Music
+          </Badge>
+          <Badge
+            variant={filter === "podcasts" ? "default" : "secondary"}
+            className="h-8 cursor-pointer"
+            onClick={() => setFilter("podcasts")}
+          >
+            Podcasts
+          </Badge>
+        </div>
+      ) : undefined}
     </div>
   );
 };
