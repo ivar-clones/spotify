@@ -1,22 +1,31 @@
 import { Category } from "@/components/internal/Category/Category";
+import { CategoryLoading } from "@/components/internal/Category/CategoryLoading";
 import { InfoTile } from "@/components/internal/InfoTile/InfoTile";
+import { InfoTileLoading } from "@/components/internal/InfoTile/InfoTileLoading";
 import { useCategories } from "@/services/hooks/use-categories";
 import { useUserPlaylists } from "@/services/hooks/use-user-playlists";
 
 export const Home = () => {
-  const { data: userPlaylists } = useUserPlaylists(8);
-  const { data: categories } = useCategories();
+  const { data: userPlaylists, isLoading: isUserPlaylistsLoading } =
+    useUserPlaylists(8);
+  const { data: categories, isLoading: isCategoriesLoading } = useCategories();
 
   return (
     <div className="flex flex-col py-2 px-4 overflow-y-scroll">
       <div className="grid gap-2 grid-cols-2 md:grid-cols-4">
-        {userPlaylists?.map((item) => (
-          <InfoTile key={item.id} info={item} />
-        ))}
+        {isUserPlaylistsLoading ? (
+          <InfoTileLoading />
+        ) : (
+          userPlaylists?.map((item) => <InfoTile key={item.id} info={item} />)
+        )}
       </div>
-      {categories?.map((category) => (
-        <Category key={category.id} category={category} />
-      ))}
+      {isCategoriesLoading ? (
+        <CategoryLoading />
+      ) : (
+        categories?.map((category) => (
+          <Category key={category.id} category={category} />
+        ))
+      )}
     </div>
   );
 };

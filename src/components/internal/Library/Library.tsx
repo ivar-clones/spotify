@@ -4,12 +4,14 @@ import { useState } from "react";
 import { SearchBar } from "../SearchBar/SearchBar";
 import { useUserPlaylists } from "@/services/hooks/use-user-playlists";
 import { PlaylistCard } from "../PlaylistCard/PlaylistCard";
+import { PlaylistCardLoading } from "../PlaylistCard/PlaylistCardLoading";
 
 export const Library = () => {
   const [filter, setFilter] = useState<"playlists" | "albums" | "artists">(
     "playlists"
   );
-  const { data: userPlaylists } = useUserPlaylists();
+  const { data: userPlaylists, isLoading: isUserPlaylistsLoading } =
+    useUserPlaylists();
 
   return (
     <div className="flex flex-col bg-muted rounded-lg w-full h-full p-4 max-sm:py-4 max-sm:px-0 max-sm:-ml-1">
@@ -44,9 +46,17 @@ export const Library = () => {
       </div>
       <SearchBar />
       <div className="pt-2 mt-2 pr-2 w-full flex flex-col items-center overflow-y-auto h-[85%] max-sm:ml-2 max-sm:gap-4 max-sm:h-[95%]">
-        {userPlaylists?.map((playlist) => (
-          <PlaylistCard key={playlist.id} variant="list" playlist={playlist} />
-        ))}
+        {isUserPlaylistsLoading ? (
+          <PlaylistCardLoading />
+        ) : (
+          userPlaylists?.map((playlist) => (
+            <PlaylistCard
+              key={playlist.id}
+              variant="list"
+              playlist={playlist}
+            />
+          ))
+        )}
       </div>
     </div>
   );
