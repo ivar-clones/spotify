@@ -1,11 +1,21 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { InfoTileProps } from "./InfoTileProps.interface";
 import { AvatarImage } from "@radix-ui/react-avatar";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const InfoTile = (props: InfoTileProps) => {
   const { info } = props;
+  const navigate = useNavigate();
+  const location = useLocation();
   return (
-    <div className="rounded-sm flex flex-row bg-indigo-300 bg-opacity-40 w-full hover:bg-opacity-80 hover:cursor-pointer">
+    <div
+      className="rounded-sm flex flex-row bg-indigo-300 bg-opacity-40 w-full hover:bg-opacity-80 hover:cursor-pointer"
+      onClick={() =>
+        navigate(`/playlist/${info.id}`, {
+          state: { from: location.pathname },
+        })
+      }
+    >
       <div className="flex">
         <Avatar className="rounded-sm h-12 w-12">
           {info.images ? (

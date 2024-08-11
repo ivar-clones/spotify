@@ -31,6 +31,8 @@ export const PlaylistBody = (props: PlaylistBodyProps) => {
   const { tracks } = props;
   const [isSticky, setIsSticky] = useState(false);
   const [listView, setListView] = useState(true);
+  const [selectedTrack, setSelectedTrack] = useState("");
+  const [hoveredTrack, setHoveredTrack] = useState("");
 
   const handleScroll = (e: any) => {
     if (e.target.scrollTop === 0) {
@@ -45,7 +47,10 @@ export const PlaylistBody = (props: PlaylistBodyProps) => {
       className="h-full rounded-b-lg p-4 overflow-y-auto"
       onScroll={handleScroll}
     >
-      <div className="flex flex-row justify-between">
+      <div
+        className="flex flex-row justify-between"
+        onClick={() => setSelectedTrack("")}
+      >
         <div className="flex flex-row gap-4 items-center">
           <Button
             size="icon"
@@ -79,8 +84,12 @@ export const PlaylistBody = (props: PlaylistBodyProps) => {
                 variant="ghost"
                 className="text-muted-foreground hover:bg-transparent hover:text-primary p-0"
               >
-                List
-                <ListIcon className="ml-2" />
+                {listView ? "List" : "Compact"}
+                {listView ? (
+                  <ListIcon className="ml-2" />
+                ) : (
+                  <AlignJustifyIcon className="ml-2" />
+                )}
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-40">
@@ -118,12 +127,12 @@ export const PlaylistBody = (props: PlaylistBodyProps) => {
         </div>
       </div>
       <div className="mt-4">
-        <Table>
+        <Table className="border-spacing-y-1 border-separate">
           <TableHeader
             className={`sticky z-50 ${isSticky ? "bg-muted -top-5" : ""}`}
           >
             <TableRow className="hover:bg-transparent">
-              <TableHead className="w-[5%] text-right">#</TableHead>
+              <TableHead className="w-[5%] text-center">#</TableHead>
               <TableHead className={`${listView ? "w-[40%]" : "w-[30%]"}`}>
                 Title
               </TableHead>
@@ -138,9 +147,23 @@ export const PlaylistBody = (props: PlaylistBodyProps) => {
           </TableHeader>
           <TableBody>
             {tracks.map((track, index) => (
-              <TableRow key={track.id} className="hover:bg-muted border-none">
-                <TableCell className="text-right text-muted-foreground rounded-tl-lg rounded-bl-lg">
-                  {index + 1}
+              <TableRow
+                key={track.id}
+                className={`hover:bg-muted border-none ${
+                  track.id === selectedTrack ? "bg-muted" : ""
+                }`}
+                onClick={() => setSelectedTrack(track.id)}
+                onMouseMove={() => setHoveredTrack(track.id)}
+                onMouseOut={() => setHoveredTrack("")}
+              >
+                <TableCell className="text-center text-muted-foreground rounded-tl-lg rounded-bl-lg">
+                  <div>
+                    {hoveredTrack === track.id || selectedTrack === track.id ? (
+                      <PlayIcon size={16} className="cursor-pointer" />
+                    ) : (
+                      index + 1
+                    )}
+                  </div>
                 </TableCell>
                 <TableCell className="text-muted-foreground">
                   <div className="flex flex-row gap-3 items-center">
@@ -162,12 +185,16 @@ export const PlaylistBody = (props: PlaylistBodyProps) => {
                   </div>
                 </TableCell>
                 {!listView ? (
-                  <TableCell className="text-muted-foreground line-clamp-1 overflow-ellipsis">
-                    {track.artists}
+                  <TableCell className="text-muted-foreground">
+                    <div className="line-clamp-1 overflow-ellipsis">
+                      {track.artists}
+                    </div>
                   </TableCell>
                 ) : undefined}
-                <TableCell className="text-muted-foreground">
-                  {track.albumName}
+                <TableCell className="text-muted-foreground line-clamp-1 overflow-ellipsis">
+                  <div className="line-clamp-1 overflow-ellipsis">
+                    {track.albumName}
+                  </div>
                 </TableCell>
                 <TableCell className="text-muted-foreground rounded-tr-lg rounded-br-lg">
                   <div>{timeFormatterInMinSeconds(track.duration)}</div>
